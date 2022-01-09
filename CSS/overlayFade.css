@@ -1,0 +1,111 @@
+/*
+Usage: <span class="overlay fadeIn|fadeOut toTop|toRight|toBottom|toLeft|toCenter"/>
+
+  | indicates an option.
+  All groups must be specified.
+  Only one option in each group may be specified.
+  
+*/
+
+.overlay {
+  /* overlay the screen */
+  position: fixed;
+  z-index: 999;
+}
+
+.overlay.fadeIn {
+  animation: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  /* retain animation state */
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    /* cover the screen with a shadow */
+    /*
+    no vertical offset,
+    no horizontal offset,
+    largest dimension blur,
+    largest dimension spread,
+    use a black shadow.
+    */
+    box-shadow: 0 0 100vmax 100vmax #000000;
+  }
+  100% {
+    /* remove the shadow */
+    box-shadow: none;
+  }
+}
+
+overlay.fadeOut {
+  animation: fadeOut;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  /* retain animation state */
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    /* start without a shadow */
+    box-shadow: none;
+  }
+  100% {
+    /* cover the screen with a shadow */
+    /*
+    no vertical offset,
+    no horizontal offset,
+    largest dimension blur,
+    largest dimension spread,
+    use a black shadow.
+    */
+    box-shadow: 0 0 100vmax 100vmax #000000;
+  }
+}
+
+.toTop {
+  /* positioned at the top*/
+  top: 0;
+  /* shade the full width */
+  width: 100vw;
+  /* allow its external shadow to cover the full height */
+  height: 0;
+}
+
+.toRight {
+  /* positioned at the right*/
+  right: 0;
+  /* allow its external shadow to cover the full width */
+  width: 0;
+  /* shade the full height */
+  height: 100vh;
+}
+
+.toBottom {
+  /* positioned at the bottom*/
+  bottom: 0;
+  /* shade the full width*/
+  width: 100vw;
+  /* allow its external shadow to cover the full height */
+  height: 0;
+}
+
+.toLeft {
+  /* positioned at the left */
+  left: 0;
+  /* allow its external shadow to cover the full width */
+  width: 0;
+  /* shade the full width */
+  height: 100vh;
+}
+
+.toCenter {
+  /* center the element */
+  top: 50%;
+  left: 50%;
+  /* external shadow covers the screen */
+  width: 0;
+  height: 0;
+}

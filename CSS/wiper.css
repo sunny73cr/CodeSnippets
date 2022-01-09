@@ -1,0 +1,66 @@
+/*
+usage:
+	<div class="wiperContainer">
+		<div class="wiperAnimation"></div>
+	</div>
+*/
+
+div.wiperContainer {
+	/* center the container*/
+	margin: 0 auto 0 auto;
+	/* space through which the wiper animates. */
+	width: 7.5rem;
+}
+
+/* the animation is a child of the container. */
+div.wiperContainer > div.wiperAnimation {
+	/* position relative to the parent element. */
+	position: relative;
+	/* colour the wiper. */
+	background-color: #c02020;
+
+	--wiperThickness: 0.6rem;
+	/* equal thickness and radius creates a circle edge. */
+	height: var(--wiperThickness);
+	border-radius: var(--wiperThickness);
+
+	/* the wiper's starting width */
+	--minimumWiperWidth: 1rem;
+	/* the wipers maximum width */
+	--maximumWiperWidth: 1.65rem;
+
+	/* add the animation. */
+	animation: wiper;
+	/* the wiper's speed. */
+	animation-duration: 2.5s;
+	/* smooth the wiper's movement. */
+	animation-timing-function: ease-in-out;
+	/* loop the animation. */
+	animation-iteration-count: infinite;
+}
+
+@keyframes wiper {
+	0% {
+	  /* start at the left of the container. */
+	  width: var(--minimumWiperWidth);
+	  left: 0%;
+	}
+	25% {
+	  /* expand the wiper during movement. */
+	  width: var(--maximumWiperWidth);
+	}
+	50% {
+	  /* contract as it approaches the boundary. */
+	  width: var(--minimumWiperWidth);
+	  left: 100%;
+	}
+	75% {
+	  /* expand on reverse movement. */
+	  width: var(--maximumWiperWidth);
+	}
+	100% {
+	  /* contract as it approaches the boundary. */
+	  width: var(--minimumWiperWidth);
+	  left: 0%;
+	}
+}
