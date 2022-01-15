@@ -39,7 +39,7 @@ Usage: <span class="overlay fadeIn|fadeOut toTop|toRight|toBottom|toLeft|toCente
   }
 }
 
-overlay.fadeOut {
+.overlay.fadeOut {
   animation: fadeOut;
   animation-duration: 2s;
   animation-timing-function: linear;
