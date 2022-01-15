@@ -16,10 +16,10 @@ import { useEffect, useRef, useState } from "react";
 import "./PageNavigation.css";
 
 function Loading() {
-	return <div>Loading</div>;
+	return <div>Loading...</div>
 }
 
-export default function PageNavigation(pages: Array<JSX.Element>) {
+export default function usePageNavigation(pages: Array<JSX.Element>) {
 	const [currentPage, setCurrentPage] = useState<JSX.Element>(pages[0]);
 
 	//derived from pages.length; to be populated on initialisation
@@ -35,17 +35,17 @@ export default function PageNavigation(pages: Array<JSX.Element>) {
 	//Initialise pages when the number of pages change.
 	useEffect(() => {
 		//exceptional state; cannot continue with an empty page array
-		if (pages.length === 0) throw new Error("EXCEPTION: pages array must not be empty; length was 0.");
+		if (pages.length === 0) throw new Error("pages array must not be empty.");
 
 		let derivedPageIndexes: Array<number> = [];
-		
+
 		//from 0 (first index) to one less than pages.length (last index)
 		//pages.map would cause a render loop without bloated code
 		for (let index = 0; index < pages.length; index++) {
 			//add the index to the temporary array
 			derivedPageIndexes = [...derivedPageIndexes, index];
 		}
-		
+
 		//assign the derived page indexes to the reference array
 		pageIndexes.current = derivedPageIndexes;
 
@@ -93,10 +93,10 @@ export default function PageNavigation(pages: Array<JSX.Element>) {
 	if (!initialised) return Loading();
 	else {
 		return (
-			<div>
+			<div className="pageNavigation">
 				{<div className="pageIndicatorBar">{renderedPageNumbers}</div>}
 				{currentPage}
-				<div className="navigationBar">
+				<div className="pageNavigationBar">
 					<button onClick={() => goToPreviousPage()}>Previous</button>
 					<button onClick={() => goToNextPage()}>Next</button>
 				</div>
@@ -104,33 +104,3 @@ export default function PageNavigation(pages: Array<JSX.Element>) {
 		);
 	}
 }
-
-/***************************************/
-/* CSS - import from another file. */
-/*
-
-.pageIndicatorBar {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-left: 2rem;
-	margin-right: 2rem;
-}
-
-.pageNumber {
-	width: 1rem;
-	height: 1rem;
-	padding: 0.5rem;
-	border: 2px solid red;
-	border-radius: 50%;
-	text-align: center;
-}
-
-.navigationBar {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-*/
-/***************************************/
