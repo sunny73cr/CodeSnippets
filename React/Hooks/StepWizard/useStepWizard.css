@@ -1,0 +1,43 @@
+.stepWizard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+
+.stepWizard .navigationBar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	max-width: 700px;
+}
+
+.stepWizard .navigationBar button {
+	/* fill the container width, */
+	width: 100%;
+	/* but restrict to ideal width. */
+	max-width: 5rem;
+}
+
+.stepWizard .stepIndicator {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 2rem;
+	min-width: 4rem;
+	border-radius: 0.3rem;
+	background-color: rgba(var(--secondaryColor), 1);
+}
+
+.stepWizard .stepIndicator p {
+	color: rgba(var(--tertiaryTextColor), 1);
+}
+
+.stepWizard .stepContent {
+	width: 100%;
+	height: 100%;
+}
