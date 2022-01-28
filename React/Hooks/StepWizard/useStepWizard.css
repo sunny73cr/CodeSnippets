@@ -21,23 +21,36 @@
 	max-width: 5rem;
 }
 
-.stepWizard .stepIndicator {
+.stepWizard .stepContent {
+	width: 100%;
+	height: 100%;
+}
+
+.stepIndicatorBar {
+	display: flex;
+	flex-direction: row;
+	column-gap: 0.5rem;
+}
+
+.stepIndicatorBar .step {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
+	width: 2rem;
 	height: 2rem;
-	min-width: 4rem;
-	border-radius: 0.3rem;
+	border-radius: 50%;
 	background-color: rgba(var(--secondaryColor), 1);
+	color: rgba(var(--secondaryTextColor), 1);
 }
 
-.stepWizard .stepIndicator p {
+.stepIndicatorBar .step.active {
+	background-color: rgba(var(--tertiaryColor), 1);
 	color: rgba(var(--tertiaryTextColor), 1);
 }
 
-.stepWizard .stepContent {
-	width: 100%;
-	height: 100%;
+.stepIndicatorBar .step.submit {
+	width: 4rem;
+	height: 2rem;
+	border-radius: 0.3rem;
 }
